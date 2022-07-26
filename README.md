@@ -46,3 +46,14 @@ Delete topic
 kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic my_first_topic
 ```
 
+### Execute examples
+Run kafka-producer
+```
+cd code/kafka-producer
+./gradlew bootRun
+```
+Run kafka-consumer
+```
+cd code/kafka-consumer
+./gradlew bootRun
+```
