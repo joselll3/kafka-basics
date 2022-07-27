@@ -37,6 +37,14 @@ Describe topic
 ```
 kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic my_first_topic
 ```
+List all consumer groups.
+```
+kafka-consumer-groups.sh  --list --bootstrap-server localhost:9092
+```
+Describe consumer group.
+```
+kafka-consumer-groups.sh --describe --group console-consumer-70207 --bootstrap-server localhost:9092
+```
 Update topic. Add more partitions
 ```
 kafka-topics.sh --bootstrap-server localhost:9092 --alter --topic my_first_topic --partitions 4
@@ -57,3 +65,4 @@ Run kafka-consumer
 cd kafka-consumer
 ./gradlew bootRun
 ```
+
