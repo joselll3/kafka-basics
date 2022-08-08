@@ -3,6 +3,7 @@ package com.example.demo.scheduler;
 import com.example.demo.entity.RunnerLocation;
 import com.example.demo.producer.RunnerLocationProducer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 @Service
+@ConditionalOnProperty(name="kafka-producer.scheduler.enabled", matchIfMissing = true)
 public class RunnerLocationScheduler {
 
     private final List<String> RUNNER_NAMES = List.of("Natalia", "Jose", "Noelia", "Sergio");

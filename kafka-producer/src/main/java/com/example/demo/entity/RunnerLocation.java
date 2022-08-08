@@ -6,6 +6,8 @@ public class RunnerLocation {
     private double latitude;
     private double longitude;
 
+    public RunnerLocation() {
+    }
 
     public RunnerLocation(String name, double latitude, double longitude) {
         this.name = name;

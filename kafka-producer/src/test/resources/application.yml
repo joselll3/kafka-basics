@@ -1,0 +1,5 @@
+kafka-producer:
+  scheduler:
+    enabled: false
+  topics:
+    location: t_location
