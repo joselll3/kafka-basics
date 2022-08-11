@@ -43,7 +43,7 @@ public class RunnerLocationProducerIT {
 
 
     @BeforeEach
-    void setUp() throws Exception {
+    void setUp() {
         ConsumerFactory<String, String> cf = new DefaultKafkaConsumerFactory<>(
                 KafkaTestUtils.consumerProps("my-test-groupId", "true", embeddedKafka),
         StringDeserializer::new, StringDeserializer::new);
@@ -53,10 +53,10 @@ public class RunnerLocationProducerIT {
     @Test
     void when_publishRunnerLocation_expectConsumedRunnerLocation() throws JsonProcessingException {
         RunnerLocation runnerLocation = new RunnerLocation(NAME, LATITUDE, LONGITUDE);
+
         runnerLocationProducer.send(runnerLocation);
 
         ConsumerRecord<String, String> record = KafkaTestUtils.getSingleRecord(consumer, topic);
-
         RunnerLocation consumed = objectMapper.readValue(record.value(), RunnerLocation.class);
         Assertions.assertEquals(NAME, consumed.getName());
         Assertions.assertEquals(LONGITUDE, consumed.getLongitude());
